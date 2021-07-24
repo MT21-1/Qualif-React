@@ -1,24 +1,36 @@
-import logo from './logo.svg';
 import './App.css';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
+import ListPage from "./pages/ListPage/ListPage";
+import DetailPage from "./pages/DetailPage/DetailPage";
+import FavouritePage from "./pages/FavouritePage/FavouritePage";
+import SearchPage from "./pages/SearchPage/SearchPage";
+import ArtistPage from './pages/ArtistPage/ArtistPage';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Switch>
+        <Route path="/artist/:name">
+          <ArtistPage/>
+        </Route>
+        <Route path="/search">
+          {/* Disini kasih search page */}
+          <SearchPage/>
+        </Route>
+        <Route path="/detail/:id">
+            {/* Disini kasih detail */}
+            <DetailPage/>
+        </Route>
+        <Route path="/Favourites">
+            {/* Disini kasih favorite page */}
+            <FavouritePage/>
+        </Route>
+        <Route path="/">
+          {/* Disini kasih list page */}
+          <ListPage/>
+        </Route>
+      </Switch>
+    </Router>      
   );
 }
 
